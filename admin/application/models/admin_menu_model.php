@@ -6,18 +6,14 @@ class Admin_menu_model extends CI_Model
 		$this->load->database();
 	}
 	
-	public function get_archives($id = FALSE)
+	public function get_archives($url)
 	{
-		
-		if($id === FALSE)
-		{
-			$this->db->order_by("bac_created_time", "desc");
-			$query=$this->db->get('blog_archives');
-			return $query->result_array();
-		}
 
-		$query = $this->db->get_where('blog_archives',array('bac_id'=>$id));
-		return $query->row_array();
+		$this->db->select('*');
+		$this->db->from('admin_menu_bar as cn');
+		$this->db->join('admin_menu_bar as fn', 'cn.amb_parent_f_amb = fn.amb_id');
+		$this->db->where('cn.amb_link', $url);
+		$query = $this->db->get();
 	}
 	
 }

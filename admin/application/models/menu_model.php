@@ -14,6 +14,15 @@ class Menu_model extends CI_Model{
 		
 		return $query->result_array();
     }
+   	function get_fncn($url)
+	{
+		$this->db->select('fn.amb_name as fn_name,cn.amb_name as cn_name,fn.amb_icon as fn_icon');
+		$this->db->from('admin_menu_bar as cn');
+		$this->db->join('admin_menu_bar as fn', 'cn.amb_parent_f_amb = fn.amb_id');
+		$this->db->where('cn.amb_link', $url);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
    
 }
 ?>

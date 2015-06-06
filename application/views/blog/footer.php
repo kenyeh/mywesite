@@ -1,10 +1,12 @@
 
 
     <footer class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
+      <div class="container blog-footer-content">
+        <p>
+          <a href="javascript:" id="btn_back_top"><i class="fa fa-angle-double-up fa-2x"></i></a>
+        </p>
+        <p>Copyright &copy; 2015 <a href="<?= base_url()?>">kenyeh</a></p>
+      </div>
     </footer>
   </body>
 </html>

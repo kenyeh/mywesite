@@ -8,11 +8,12 @@ class Admin_center extends MY_Admin
 		//已載入helper('url')
     }
 	
-	public function index($file_name='member',$class_name='dashboard'){
+	public function index($file_name='user',$class_name='dashboard'){
 		
 		$data['menu']=$this->menu_data();
 		
-		
+		$data['user_id'] = $this->session->userdata('account_id');
+		$data['user_name'] = $this->session->userdata('account_name');
 		
 		$data['fn']=$file_name;
 		$data['cn']=$class_name;
@@ -36,6 +37,7 @@ class Admin_center extends MY_Admin
 				$menu_ary[$v['amb_id']]=array(
 				'name'=>$v['amb_name'],
 				'link'=>$v['amb_link'],
+				'icon'=>$v['amb_icon'],
 				'action'=>array()
 				);
 			}else

@@ -86,5 +86,18 @@ Use search to find needed section.
 -->
 <body class="theme-default main-menu-animated">
 <script>var init = [];</script>
-<div id="content-wrapper" style="padding:0px 30px 15px 0px;">
+<div id="content-wrapper">
+	<ul class="breadcrumb breadcrumb-page">
+		<div class="breadcrumb-label text-light-gray">You are here: </div>
+		<li><a href="#"><?=$fn?></a></li>
+		<li class="active"><a href="#"><?=$cn?></a></li>
+	</ul>
+	<div class="page-header">
+		<div class="row">
+			<!-- Page header, center on small screens -->
+			<h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa <?=$icon?> page-header-icon"></i>&nbsp;&nbsp;<?=$cn?></h1>
+		</div>
+	</div> <!-- / .page-header -->
+	<div id="content-wrapper" style="padding:0px 30px 15px 0px;">
+		
 

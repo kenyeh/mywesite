@@ -8,10 +8,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Resume Website Template</title>
+	<title>Resume Website</title>
 	<script src="resource/js/jquery.min.js"> </script>
 	<link href="resource/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-	<link href="resource/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="resource/css/profile/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -47,7 +47,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						 <li><a class="scroll" href="#skills">SKILLS</a></li>
 						 <li><a class="scroll" href="#port">PORTFOLIO</a></li>
 						 <li><a class="scroll" href="#contact">CONTACT</a></li>
-						 <li><a href="admin">LOGIN</a></li>
 					 </ul>
 				 </div>
 				  <!------Navigation ends-------->
@@ -60,12 +59,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	   <div class="banner">
 	      <div class="container">
 		     <div class="banner-info">
-			      <div class="bannerlogo">
-					  <img src="resource/images/diamond.png">
-			      </div>
 			      <div class="bannerhead">
-				      <h2>My name is <span>Ken Yeh</span></h2>
-				      <h3>PHP Programmer</h3>
+				      <h1>I'm <span>Ken Yeh</span></h1>
+				      <h3>Web Programmer</h3>
 				      <p></p>
 					  <a class="downarrow scroll" href="#about"><span> </span></a>
 			      </div>
@@ -83,32 +79,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	   <div id="about" class="about">
 		 <div class="container">
 			   <div class="header-section text-center">
-				  <h2><span> </span>工作經歷<span> </span></h2>
+				  <h2><span> </span>ABOUT<span> </span></h2>
 				  </div>
-				 <span><p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-					 lorem quis bibendum auctor,nisi elit consequat ipsum,nec sagittis sem nibh id elit.Duis.</p></span>
-					 
-			  <div class="years">	 
-				<h4><b>2009</b></h4>
-				 <span><h4>Project Manager Web Center</h4></span>
-				 <p><i>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-					lorem quis bibendum auctor,nisi elit consequat ipsum,nec sagittis sem nibh id elit.Duis.</i></p>
-			  </div> 
+				 <span><p>resume</p></span>
 				
 			  <div class="years">	 		
 				 <h4><b>2012</b></h4>
-				 <span><h4>Manager Delta Coders</h4></span>
-				 <p><i>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-					lorem quis bibendum auctor,nisi elit consequat ipsum,nec sagittis sem nibh id elit.Duis.</i></p>
+				 <span><h4>Web programmer</h4></span>
+				 <p><i>Client-side coding,Server-side coding,Database technology</i></p>
 			  </div> 
 					
 			   <div class="years">	 	
 				 <h4><b>2013</b></h4>
-				 <span><h4>Owner Alternative Labs</h4></span>
+				 <span><h4>Web programmer</h4></span>
 				 <div class="labs">
-					 <p><i>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-						lorem quis bibendum auctor,nisi elit consequat ipsum,nec sagittis sem nibh id elit.Duis.
-						sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec teltus</i></p>
+					 <p><i>Client-side coding,Server-side coding,Database technology.</i></p>
 			     </div>
 			  </div>
 				 <a class="arrow scroll" href="#skills"><span> </span></a>
@@ -121,7 +106,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	  <div class="container">
 	     <div class="skills-grids">
 			  <div class="skill-section text-center">
-				  <h2><span> </span>專長技能<span> </span></h2>
+				  <h2><span> </span>SKILLS<span> </span></h2>
 			  </div>
 					  <div class="services_grids">
 						  <div id="canvas">
@@ -158,11 +143,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					 <script type="text/javascript" src="resource/js/circles.js"></script>
 								 <script>
 									var colors = [
-											['#181115', '#30222A'], ['#181115', '#30222A'], ['#181115', '#30222A'], ['#181115', '#30222A']
+											['#ffffff', '#99CCFF'], ['#ffffff', '#99CCFF'], ['#ffffff', '#99CCFF'], ['#ffffff', '#99CCFF']
 										];
+									var pre=[0,3,2,3,4];
 									for (var i = 1; i <= 4; i++) {
-										var child = document.getElementById('circles-' + i),
-											percentage = 50 + (i * 10);
+										var child = document.getElementById('circles-' + i);
+										var	percentage = 50 + (pre[i] * 10);
 											
 										Circles.create({
 											id:         child.id,
@@ -191,24 +177,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			  </div>
 			  <div class="container">
 				  <div class="portfolio-grids">
-					  <div class="portfolio-grid col-md-4">
-						 <a href="blog"><img src="resource/images/monitr1.png"></a>
-						  <p>Proin gravida nibh vel velit auctor aliquet.
-							 Aenean sollicitudin, lorem quis bibendum</p>
+					  <div class="portfolio-grid col-md-4 col-md-offset-4">
+						 <a href="blog"><img src="resource/images/profile/m-blog.png"></a>
+						  <p>Blog</p>
 						  <a class="rightarrow" href="blog"><span> </span></a>
 					  </div>
+					  <!--
 					  <div class="portfolio-grid col-md-4">
-						  <a href="#"><img src="resource/images/monitr2.png"></a>
+						  <a href="#"><img src="resource/images/profile/monitr2.png"></a>
 						  <p>Proin gravida nibh vel velit auctor aliquet.
 							 Aenean sollicitudin, lorem quis bibendum</p>
 						  <a class="rightarrow" href="#"><span> </span></a>
 					  </div>
 					  <div class="portfolio-grid col-md-4">
-						  <a href="#"><img src="resource/images/monitr3.png"></a>
+						  <a href="#"><img src="resource/images/profile/monitr3.png"></a>
 						  <p>Proin gravida nibh vel velit auctor aliquet.
 							 Aenean sollicitudin, lorem quis bibendum</p>
 						  <a class="rightarrow" href="#"><span> </span></a>
 					  </div>
+					  -->
 					  <div class="clear"> </div>
 				  </div>
 				  <a class="portdown scroll" href="#contact"><span> </span></a>
@@ -230,9 +217,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			 <div class="col-md-6">
 				  <div class="footer-left">
 						<div class="social-icons">
-						   <a href="#"><img src="resource/images/in.png"></a>
-						   <a href="#"><img src="resource/images/twt.png"></a>
-						   <a href="#"><img src="resource/images/fb.png"></a>
+						   <a href="#"><img src="resource/images/profile/in.png"></a>
+						   <a href="#"><img src="resource/images/profile/fb.png"></a>
 					   </div>
 					   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem
 					   quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh
@@ -255,7 +241,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 </div>
 				  </div>
 				  <div class="clear"></div>
-				  <p class="copy-right">Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+				  <p class="copy-right">Copyright by <a href="#top-top">Kenyeh</a></p>
 			  </div>
 		 </div>
 	 </div>

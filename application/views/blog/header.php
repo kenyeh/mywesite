@@ -6,201 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="<?= base_url()?>resource/images/blog/k.png">
 
-    <title>Blog Template for Bootstrap</title>
+    <title>Blog<?= $web_site?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?= base_url()?>resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url()?>resource/css/blog/bootstrap-flatly.min.css" rel="stylesheet">
+    <!-- Font-awesome -->
+    <link href="<?= base_url()?>resource/css/font-awesome.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <style type="text/css">
-	/*
-	* Globals
-	*/
-	html, body {
-		/* 設定body高度為100% 拉到視窗可視的大小 */
-		height: 100%;
-	}
-	
-	body {
-	  font-family: Georgia, "Times New Roman", Times, serif;
-	  color: #555;
-	}
-
-	h1, .h1,
-	h2, .h2,
-	h3, .h3,
-	h4, .h4,
-	h5, .h5,
-	h6, .h6 {
-	  margin-top: 0;
-	  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	  font-weight: normal;
-	  color: #333;
-	}
+    <!-- Custom styles -->
+    <link href="<?= base_url()?>resource/css/blog/blog.css" rel="stylesheet">
 
 
-	/*
-	 * Override Bootstrap's default container.
-	 */
-
-	@media (min-width: 1200px) {
-	  .container {
-		width: 970px;
-	  }
-	}
-
-
-	/*
-	 * Masthead for nav
-	 */
-
-	.blog-masthead {
-	  background-color: #428bca;
-	  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
-			  box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
-	}
-
-	/* Nav links */
-	.blog-nav-item {
-	  position: relative;
-	  display: inline-block;
-	  padding: 10px;
-	  font-weight: 500;
-	  color: #cdddeb;
-	}
-	.blog-nav-item:hover,
-	.blog-nav-item:focus {
-	  color: #fff;
-	  text-decoration: none;
-	}
-
-	/* Active state gets a caret at the bottom */
-	.blog-nav .active {
-	  color: #fff;
-	}
-	.blog-nav .active:after {
-	  position: absolute;
-	  bottom: 0;
-	  left: 50%;
-	  width: 0;
-	  height: 0;
-	  margin-left: -5px;
-	  vertical-align: middle;
-	  content: " ";
-	  border-right: 5px solid transparent;
-	  border-bottom: 5px solid;
-	  border-left: 5px solid transparent;
-	}
-
-
-	/*
-	 * Blog name and description
-	 */
-
-	.blog-header {
-	  padding-top: 20px;
-	  padding-bottom: 20px;
-	}
-	.blog-title {
-	  margin-top: 30px;
-	  margin-bottom: 0;
-	  font-size: 60px;
-	  font-weight: normal;
-	}
-	.blog-description {
-	  font-size: 20px;
-	  color: #999;
-	}
-
-
-	/*
-	 * Main column and sidebar layout
-	 */
-
-	.blog-main {
-	  font-size: 18px;
-	  line-height: 1.5;
-	}
-
-	/* Sidebar modules for boxing content */
-	.sidebar-module {
-	  padding: 15px;
-	  margin: 0 -15px 15px;
-	}
-	.sidebar-module-inset {
-	  padding: 15px;
-	  background-color: #f5f5f5;
-	  border-radius: 4px;
-	}
-	.sidebar-module-inset p:last-child,
-	.sidebar-module-inset ul:last-child,
-	.sidebar-module-inset ol:last-child {
-	  margin-bottom: 0;
-	}
-
-
-	/* Pagination */
-	.pager {
-	  margin-bottom: 60px;
-	  text-align: left;
-	}
-	.pager > li > a {
-	  width: 140px;
-	  padding: 10px 20px;
-	  text-align: center;
-	  border-radius: 30px;
-	}
-
-
-	/*
-	 * Blog posts
-	 */
-
-	.blog-post {
-	  margin-bottom: 60px;
-	}
-	.blog-post-title {
-	  margin-bottom: 5px;
-	  font-size: 40px;
-	}
-	.blog-post-meta {
-	  margin-bottom: 20px;
-	  color: #999;
-	}
-	
-	/*
-	 * Blog archive
-	 */
-	 
-	.blog-archive {
-	  margin-bottom: 60px;
-	  min-height: 75%;
-	}
-	 
-	 
-	 
-	 
-
-	/*
-	 * Footer
-	 */
-
-	.blog-footer {
-	  padding: 40px 0;
-	  color: #999;
-	  text-align: center;
-	  background-color: #f9f9f9;
-	  border-top: 1px solid #e5e5e5;
-	}
-	.blog-footer p:last-child {
-	  margin-bottom: 0;
-	}
-  </style>
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -216,22 +34,72 @@
     <script src="<?= base_url()?>resource/js/jquery.min.js"></script>
     <script src="<?= base_url()?>resource/js/bootstrap.min.js"></script>
     
-	<!--123ddd-->
+	<!--my.js-->
 	<script src="<?= base_url()?>resource/js/MY_main.js"></script>
 	
-	
+	<!--lazyload-->
+	<script src="<?= base_url()?>resource/js/jquery.lazyload.min.js"></script>
   </head>
 
   <body>
-
-    <div class="blog-masthead">
-      <div class="container">
+	<div class="modal fade" id="login_alert">
+		<div class="modal-dialog modal-sm">
+			<div id="login_alert_div" class="alert alert-warning" role="alert">帳密錯誤。</div>
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->	
+	<div class="modal fade" id="login_modal">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Sign in</h4>
+				</div>
+				<div class="modal-body">
+			      <form class="form-signin">
+			        <label for="signin_id" class="sr-only">ID</label>
+			        <input type="email" id="signin_id" name="signin_id" class="form-control" placeholder="ID" autofocus>
+			        <br/>
+			        <label for="signin_password" class="sr-only">Password</label>
+			        <input type="password" id="signin_password" name="signin_password" class="form-control" placeholder="Password" >
+			        <br/>
+			        <button class="btn btn-primary btn-block" id="btn_signin" type="button">Sign in</button>
+			      </form>
+				</div>
+				
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	
+    <div class="blog-masthead container-fluid">
+      
         <nav class="blog-nav">
-          <a id="Blog_index_link" class="blog-nav-item" href="<?= base_url()?>blog">Blog</a>
-          <a id="Blog_post_link" class="blog-nav-item" href="<?= base_url()?>blog/post">Post</a>
-          <a class="blog-nav-item" href="<?= base_url()?>">Profile</a>
+         	<a id="Blog_index_link" class="blog-nav-item navbar-brand" href="<?= base_url()?>blog">
+         		<img class="Brand" src="<?= base_url()?>resource/images/blog/k.png" height="28">
+         	</a>
+         	
+         	<?php if (!empty($this->session_name)): ?>
+          	<a id="Blog_signout_link" class="blog-nav-item pull-right text-primary" href="#">
+          		<i class="fa fa-power-off fa-lg tip" data-toggle="tooltip" data-placement="bottom" title="登出"></i>
+          	</a>
+		  		<?php if (isset($archive_id_code)): ?>
+		      	<a id="Blog_edit_link" class="blog-nav-item pull-right" href="<?= base_url()?>blog/post/<?= $archive_id_code?>">
+		     		<i class="fa fa-pencil-square-o fa-lg tip" data-toggle="tooltip" data-placement="bottom" title="編輯"></i>
+		     	</a>
+		     	
+		     	<?php elseif(isset($edit_id)): ?>
+		     	<a id="Blog_edit_link" class="blog-nav-item pull-right" href="<?= base_url()?>blog/<?= $edit_id?>">
+		     		<i class="fa fa-undo fa-lg tip" data-toggle="tooltip" data-placement="bottom" title="返回"></i>
+		     	</a>
+		     	<?php else: ?>
+		     	<a id="Blog_post_link" class="blog-nav-item pull-right" href="<?= base_url()?>blog/post">
+		      		<i class="fa fa-pencil fa-lg tip" data-toggle="tooltip" data-placement="bottom" title="新增"></i>
+		      	</a>
+		  		<?php endif; ?>
+          		
+      		<?php endif; ?>
         </nav>
-      </div>
+        
     </div>
 
     

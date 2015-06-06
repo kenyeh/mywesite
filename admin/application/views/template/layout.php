@@ -32,7 +32,7 @@ Use search to find needed section.
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Dashboard - PixelAdmin</title>
+	<title>Dashboard - MYAdmin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
 	<!-- Open Sans font from Google CDN -->
@@ -64,7 +64,7 @@ Use search to find needed section.
 	<script src="<?= base_url()?>resource/javascripts/pixel-admin.min.js"></script>
 
 	
-	</style>
+	
 	
 	
 	
@@ -107,7 +107,7 @@ Use search to find needed section.
 				<!-- Logo -->
 				<a href="index.html" class="navbar-brand">
 					<div><img alt="Pixel Admin" src="<?= base_url()?>resource/images/pixel-admin/main-navbar-logo.png"></div>
-					PixelAdmin
+					MYAdmin
 				</a>
 
 				<!-- Main navbar toggle -->
@@ -117,6 +117,7 @@ Use search to find needed section.
 
 			<div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
 				<div>
+					<!--
 					<ul class="nav navbar-nav">
 						<li>
 							<a href="#">Home</a>
@@ -130,7 +131,8 @@ Use search to find needed section.
 								<li><a href="#">Third item</a></li>
 							</ul>
 						</li>
-					</ul> <!-- / .navbar-nav -->
+					</ul>-->
+					<!-- / .navbar-nav -->
 
 					<div class="right clearfix">
 						<ul class="nav navbar-nav pull-right right-navbar-nav">
@@ -340,8 +342,8 @@ Use search to find needed section.
 
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
-									<img src="<?= base_url()?>resource/demo/avatars/1.jpg" alt="">
-									<span>John Doe</span>
+									<img src="<?= base_url()?>resource/images/pixel-admin/avatar.png" alt="" class=""><!--自定義頭像-->
+									<span><?=$user_name?></span>
 								</a>
 								<ul class="dropdown-menu">
 									<li><a href="#"><span class="label label-warning pull-right">New</span>Profile</a></li>
@@ -391,9 +393,10 @@ Use search to find needed section.
 					 Javascript: html/<?= base_url()?>resource/demo/demo.js
 				 -->
 				<div>
-					<div class="text-bg"><span class="text-slim">Welcome,</span> <span class="text-semibold">John</span></div>
+					<div class="text-bg"><span class="text-slim">Welcome</span></br><span class="text-semibold"><?=$user_name?></span></div>
 
-					<img src="<?= base_url()?>resource/demo/avatars/1.jpg" alt="" class="">
+					<img src="<?= base_url()?>resource/images/pixel-admin/avatar.png" alt="" class=""><!--自定義頭像-->
+					
 					<div class="btn-group">
 						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-envelope"></i></a>
 						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-user"></i></a>
@@ -411,12 +414,19 @@ Use search to find needed section.
 				<!-- start menu -->
 				<?php foreach($menu as $mk=>$menu_item):?>
 				<li class="mm-dropdown">
-					<a id="left_menu_<?= $mk?>" href="#"><span class="mm-text"><?= $menu_item['name']?></span></a>
+					<a id="left_menu_<?= $mk?>" href="#">
+						<?php if (!empty($menu_item['icon'])): ?>
+						    <i class="menu-icon fa <?=$menu_item['icon']?>"></i>
+						<?php else: ?>
+							<i class="menu-icon fa fa-toggle-down"></i>
+						<?php endif; ?>
+						<span class="mm-text"><?= $menu_item['name']?></span>
+					</a>
 					<?php if (count($menu_item['action'])>0): ?>
 					<ul>
 						<?php foreach($menu_item['action'] as $mak=>$menu_action_item):?>
 						<li>
-							<a id="left_menu_<?= $mak?>" tabindex="-1" href="<?= $menu_action_item['link']?>"><span class="mm-text"><?= $menu_action_item['name']?></span></a>
+							<a id="left_menu_<?= $mak?>" tabindex="-1" href="javascript:redirect_action('<?= $menu_action_item['link']?>');"><span class="mm-text"><?= $menu_action_item['name']?></span></a>
 						</li>
 						<?php endforeach ?>
 					</ul>
@@ -432,48 +442,24 @@ Use search to find needed section.
 		</div> <!-- / #main-menu-inner -->
 	</div> <!-- / #main-menu -->
 <!-- /4. $MAIN_MENU -->
-	<div id="content-wrapper">
-		<ul class="breadcrumb breadcrumb-page">
-			<div class="breadcrumb-label text-light-gray">You are here: </div>
-			<li><a href="#">Home</a></li>
-			<li class="active"><a href="#">Dashboard</a></li>
-		</ul>
-		<div class="page-header">
-			
-			<div class="row">
-				<!-- Page header, center on small screens -->
-				<h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Dashboard</h1>
-				
-				<div class="col-xs-12 col-sm-8">
-					<div class="row">
-						<hr class="visible-xs no-grid-gutter-h">
-						<!-- "Create project" button, width=auto on desktops -->
-						<div class="pull-right col-xs-12 col-sm-auto"><a href="#" class="btn btn-primary btn-labeled" style="width: 100%;"><span class="btn-label icon fa fa-plus"></span>Create project</a></div>
-
-						<!-- Margin -->
-						<div class="visible-xs clearfix form-group-margin"></div>
-
-						<!-- Search field -->
-						<form action="" class="pull-right col-xs-12 col-sm-6">
-							<div class="input-group no-margin">
-								<span class="input-group-addon" style="border:none;background: #fff;background: rgba(0,0,0,.05);"><i class="fa fa-search"></i></span>
-								<input type="text" placeholder="Search..." class="form-control no-padding-hr" style="border:none;background: #fff;background: rgba(0,0,0,.05);">
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div> <!-- / .page-header -->
-		<iframe src="<?= $fn?>/<?= $cn?>" id="content_iframe" class="iframe" name="content_iframe" width="100%"  style="border:0px;" seamless=""></iframe>
-	</div> <!-- / #content-wrapper -->
+	
+		
+	<iframe src="<?= $fn?>/<?= $cn?>" id="content_iframe" class="iframe" name="content_iframe" width="100%"  style="border:0px;" seamless=""></iframe>
+	
 	<div id="main-menu-bg"></div>
 </div> <!-- / #main-wrapper -->
 
 <script type="text/javascript">
 	init.push(function () {
 		// Javascript code here
-	})
+		
+
+	});
 	window.PixelAdmin.start(init);
+	function redirect_action(link)
+	{
+		$("#content_iframe").attr('src',link);
+	}
 </script>
 
 </body>

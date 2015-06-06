@@ -38,6 +38,10 @@
 |
 */
 
+$route['blog/page/(:any)'] = 'blog/index/$1';
+$route['blog/login'] = 'blog/login';
+$route['blog/logout'] = 'blog/logout';
+$route['blog/post/(:any)'] = 'blog/post/$1';
 $route['blog/post'] = 'blog/post';
 $route['blog/(:any)'] = 'blog/view/$1';
 $route['blog'] = 'blog';

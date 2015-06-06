@@ -1,6 +1,10 @@
-	</div> <!-- / #content-wrapper -->
+		</div> <!-- / #content-wrapper -->
 
-</div> <!-- / #main-wrapper -->
+	</div> <!-- / #main-wrapper -->
+</div> <!-- / #content-wrapper -->
+
+
+
 
 <script type="text/javascript">
 	init.push(function () {

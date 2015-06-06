@@ -5,7 +5,8 @@
 	License URL: http://creativecommons.org/licenses/by/3.0/
 ---*/
 html,body{
-	font-family: 'Lato', sans-serif;
+	/*font-family: 'Lato', sans-serif;*/
+	font-family: 'Lato', sans-serif, trebuchet ms, arial, sans-serif;
 }
 .clear{
 	clear:both;
@@ -22,7 +23,7 @@ body input[type="text"],body input[type="submit"],body textarea,body input[type=
 }
 /*------ HEADERBG STARTS---------*/
 .headerbg{
-	background: url(../images/bannerbg.png);
+	background: url(../../images/profile/bgpic.jpg) center center no-repeat;
 	min-height:700px;
 	width:100%;
 	background-size:cover;
@@ -31,7 +32,8 @@ body input[type="text"],body input[type="submit"],body textarea,body input[type=
 {
 	min-height:700px;
 	width:100%;
-	background: rgba(0,0,0,0.5);  /*就这么简单*/
+	background: rgba(0,0,0,0.3);
+	/*background:hsla(0, 100%,100%, 0.3);*/
 }
 /*------ HEADER STARTS---------*/
 .header{
@@ -47,11 +49,11 @@ body input[type="text"],body input[type="submit"],body textarea,body input[type=
 	margin:0.5em 0 0.5em 0em;
 }
 .logo a{
-	color:#B5A9B7;
+	color:#fff;
 	font-size:1.9em;
 }
 .logo a:hover{
-	color:#B5A9B7;
+	color:#FFFFFF;
     text-decoration:none;
 }
 /*------ LOGO ENDS---------*/
@@ -64,10 +66,10 @@ body input[type="text"],body input[type="submit"],body textarea,body input[type=
 	margin:1em 1.5em 0 0;
 }
 .nav ul li a{
-	color:#B5A9B7;
+	color:#DDDDDD;
 }
 .nav ul li a:hover{
-	color:gray;
+	color:#FFFFFF;
 	text-decoration:none;
 }
 /*------ TOPNAV ENDS---------*/
@@ -81,25 +83,25 @@ body input[type="text"],body input[type="submit"],body textarea,body input[type=
 	width: 70%;
 	float: right;
 }
+/*
 .bannerlogo{
 	float: left;
 	margin-top: 0.8em;
 }
+*/
 .bannerhead{
 	float:right;
 }
-.bannerhead h2{
-	color: 5E8A8B;
+.bannerhead h1{
+	color: #ffffff;
+	font-weight:bolder;
 	margin:0;
 	padding:0;
+
 }
-.bannerhead h2 span{
-	color:#F1E9F2;
-	font-weight:bolder;
-	font-size:1.2em;
-}
+
 .bannerhead h3{
-	color:#281D24;
+	color:#FFFFFF;
 	font-weight:bolder;
     font-size:2.5em;
 }
@@ -109,13 +111,13 @@ body input[type="text"],body input[type="submit"],body textarea,body input[type=
 a.downarrow  span{
  	height:48px;
     width:48px;
-    background:url(../images/down.png);
+    background:url(../../images/profile/down.png);
     display:inline-block;
 }
 a.downarrow{
   	display: block;
 	position: absolute;
-	top: 370px;
+	top: 170px;
 	left: 17%;
 }
 .bannerhead{
@@ -124,18 +126,18 @@ a.downarrow{
 }
 .banner-info{
 	position: relative;
-	top: 182px;
+	top: 400px;
 	left: 11%;
 }
 /*------ About STARTS---------*/
 .about{
 	color:white;
 	text-align:center;
-	background:#281D24;
+	background:#FFFFFF;
 }
 .header-section h2{
-	color: #C6C3C5;
-	font-weight: 300;
+	color: #000000;
+	font-weight:bolder;
 	margin-top: 2.5em;
 	margin: 0;
 	padding: 2em 0 1em 0;
@@ -154,7 +156,7 @@ a.downarrow{
 	margin-left:10px;
 }
 .about span p{
-	color: gray;
+	color: #000000;
 	line-height: 2em;
 	margin-bottom: 4em;
 	width: 71%;
@@ -162,7 +164,7 @@ a.downarrow{
 }
 .years{
 	margin-bottom:4em;
-	color:#F1F0F0;
+	color:gray;
 }
 .years p{
 	padding-top:1em;
@@ -180,7 +182,7 @@ a.downarrow{
 .arrow span{
 	height:48px;
 	width:48px;
-	background:url(../images/bwn.png);
+	background:url(../../images/profile/bwn.png);
 	display:inline-block;
 }
 a.arrow{
@@ -190,16 +192,16 @@ a.arrow{
 /*------Skill-Section STARTS---------*/
 .skills{
 	min-height:600px;
-	background:#20191B;
+	background:#003366;
 	position:relative;
 }
 .skill-section h2{
-	color:#C6C3C5;
-	font-weight:300;
+	color:#FFFFFF;
+	font-weight:bolder;
 	margin-top:2.5em;
 }
 .skill-section span{
-	background: #8C868A;
+	background: #FFFFFF;
 	height:1px;
 	width:20%;
 	display:inline-block;
@@ -227,7 +229,7 @@ a.arrow{
 .down span{
 	height:48px;
 	width:48px;
-	background:url(../images/bwn.png);
+	background:url(../../images/profile/bwn.png);
 	display:inline-block;
 }
 a.down{
@@ -244,7 +246,8 @@ a.down{
 	text-align:center;
 }
 .Portfolio-section h2{
-	color:#91898D;
+	color:#000000;
+	font-weight:bolder;
 	font-size:2em;
 	padding:2em 0 1em;
 	margin: 0;
@@ -279,7 +282,7 @@ a.down{
 a.rightarrow  span{
 	height:30px;
 	width:30.5px;
-	background:url(../images/rightarw.png);
+	background:url(../../images/profile/rightarw.png);
 	display:inline-block;
 }
 a.rightarrow{
@@ -289,7 +292,7 @@ a.rightarrow{
 .portdown span{
 	height:48px;
 	width:48px;
-	background:url(../images/bwn.png);
+	background:url(../../images/profile/bwn.png);
 	display:inline-block;
 	}
 a.portdown{
@@ -298,20 +301,21 @@ a.portdown{
 	}
 /*------FOOTER STARTS---------*/
 .footer{
-	background: url(../images/footerbg.jpg);
+	/*background: url(../../images/profile/footerbg.jpg);*/
+	background:#003366;
 	position: relative;
 	min-height: 567px;
 	background-size: cover;
 	position:relative;
 }
 .contact-section h2{
-	color:#D2D1D1;
-	font-weight:300;
+	color:#FFFFFF;
+	font-weight:bolder;
 	font-size:2.5em;
 	padding-top:1em;
 }
 .contact-section span{
-	background: #8C868A;
+	background: #FFFFFF;
 	height:1px;
 	width:20%;
 	display:inline-block;
@@ -335,7 +339,7 @@ a.portdown{
 	opacity:0.8;
 }
 .footer-left p{
-	color:#B5A9B7;
+	color:#FFFFFF;
 	width:80%;
 	margin:2em 0 0 0em;
 	line-height:2em;
@@ -345,7 +349,7 @@ a.portdown{
 	margin-top: 1.3em;
 }
 .footer-right input[type="text"],.footer-right textarea{
-	background:#170F12;
+	background:#FFFFFF;
 	color:#B5A9B7;
 	padding: 1em 0.8em;
 	width:75%;
@@ -388,7 +392,7 @@ a.portdown{
 .up span{
 	height:48px;
 	width:48px;
-	background:url(../images/up.png);
+	background:url(../../images/profile/up.png);
 	margin-top:2em;
 	display:inline-block;
 }
@@ -439,10 +443,10 @@ p.copy-right a{
 		min-height: 591px;
 	}
 	.banner-info {
-		top: 110px;
+		top: 310px;
 	}
 	a.downarrow {
-		top: 341px;
+		top: 200px;
 		left: 23%;
 	}
 	.years {
@@ -475,12 +479,12 @@ p.copy-right a{
 		min-height:500px;
 	}
 	.banner-info {
-		top: 112px;
+		top: 312px;
 		width: 100%;
 		left: 2%;
 	}
 	a.downarrow {
-		top: 241px;
+		top: 200px;
 		left: 32%;
 	}
 	.years {
@@ -557,12 +561,12 @@ p.copy-right a{
 		min-height:500px;
 	}
 	.banner-info {
-		top: 112px;
+		top: 312px;
 		width: 100%;
 		left: 2%;
 	}
 	a.downarrow {
-		top: 241px;
+		top: 180px;
 		left: 32%;
 	}
 	.years {
@@ -659,7 +663,7 @@ p.copy-right a{
 		min-height: 457px;
 	}
 	.banner-info {
-		top: 36px;
+		top: 236px;
 		width: 100%;
 		left: 0%;
 		text-align: center;

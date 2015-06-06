@@ -17,14 +17,15 @@ class MY_Admin extends CI_Controller
 		}
 		//--
 		
-		
-		
-		
-		
-		
-		
-		
     }
+    
+     public function get_fn_cn()
+     {
+        
+        $this->load->model('menu_model');
+     	$url_ary=$this->menu_model->get_fncn(uri_string());
+     	return $url_ary;
+     }
 
 }
 ?>
