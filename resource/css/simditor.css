@@ -478,7 +478,7 @@
 }
 .simditor .simditor-popover {
   display: none;
-  padding: 5px 8px 0;
+  padding: 5px 8px 10px;
   background: #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   border-radius: 2px;
@@ -486,18 +486,19 @@
   z-index: 2;
 }
 .simditor .simditor-popover .settings-field {
-  margin: 0 0 5px 0;
-  font-size: 12px;
-  height: 25px;
-  line-height: 25px;
+  margin: 5px;
+  font-size: 14px;
+  height: 24px;
+  line-height: 14px;
 }
 .simditor .simditor-popover .settings-field label {
   margin: 0 8px 0 0;
   float: left;
+  line-height: 14px;
 }
 .simditor .simditor-popover .settings-field input[type=text] {
   float: left;
-  width: 200px;
+  width: 100%;
   box-sizing: border-box;
   font-size: 14px;
 }

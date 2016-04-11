@@ -66,7 +66,7 @@ h6, .h6,.h6:hover {
 }
 .blog-nav-item:hover,
 .blog-nav-item:focus {
-  color: #cdddeb;
+  color: #2e8b57;
   text-decoration: none;
 }
 
@@ -151,14 +151,33 @@ h6, .h6,.h6:hover {
   text-align:center;
 }
 
+
+
 .index-blog-title {
 	margin-top: 15px;
   	margin-bottom: 5px;
 	font-size: 40px;
 }
 .index-blog-meta {
-  margin-bottom: 50px;
+  margin-bottom: 15px;
   color: #999;
+}
+
+.blog-category
+{
+	margin-bottom: 30px;
+}
+.blog-category p
+{
+	display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    line-height: 1;
+    color: #999999;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color:rgb(236, 240, 241);
 }
 
 .index-blog-fp
@@ -354,6 +373,24 @@ h6, .h6,.h6:hover {
 {
 	margin-right: -30px;
   	margin-left: -30px;
+}
+
+.blog-bottom {
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.blog-bottom-category
+{
+	display: inline;
+    padding: .4em 1.2em .6em;
+    font-size: 120%;
+    line-height: 1;
+    color: #999999;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color:rgb(236, 240, 241);
 }
 
 .blog-post {

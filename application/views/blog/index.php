@@ -3,6 +3,36 @@
 	    $(".index-blog-main img").lazyload({effect: "fadeIn",threshold : 200});
 	});
 </script>
+<link rel="stylesheet" type="text/css" href="<?= base_url()?>resource/css/blog/banner_styles.css">
+<script src="<?= base_url()?>resource/js/banner_main.js"></script>
+<script src="<?= base_url()?>resource/js/stopExecutionOnTimeout.js?t=1"></script>
+<div class="slider-container" id="slider_container">
+  <div class="slider-control left inactive"></div>
+  <div class="slider-control right"></div>
+  <ul class="slider-pagi"></ul>
+  <div class="slider">
+    <?php foreach($banner_archives as $key=>$banner_archives_item):?>
+    <div class="slide slide-<?=$key?> ba_active">
+      <div class="slide__bg">
+      	<?=$banner_archives_item['bac_banner']?>
+      </div>
+      <div class="slide__content">
+        <svg class="slide__overlay" viewBox="0 49 740 405" preserveAspectRatio="xMidYMax slice">
+          <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+        </svg>
+        <div class="slide__text">
+          <h2 class="slide__text-heading"><a href="<?= base_url()?>blog/<?= url_title($banner_archives_item['bac_title'])."-".$this->blog_model->ntk_encrypt($banner_archives_item['bac_id'])?>"><?= $banner_archives_item['bac_title']?></a></h2>
+          <div class="slide__text-desc">
+            <?= $this->blog_model->show_first_part($this->typography->auto_typography($banner_archives_item['bac_content']));?>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php endforeach ?>
+  </div>
+</div>
+
+<!--
 <div class="jum-bg">
 <div class="jum-filter">
   <div class="container">
@@ -13,6 +43,7 @@
   </div>
 </div>
 </div>
+-->
 <div class="container">
   <div class="row">
 
@@ -25,10 +56,18 @@
 			  <div class="index_banner_div">
 			  <?= $archives_item['bac_banner']?>
 			  </div>
+			  <!-- 標題 -->
 			  <div class="index-blog-header">
   				<a class="h2 index-blog-title" href="<?= base_url()?>blog/<?= url_title($archives_item['bac_title'])."-".$this->blog_model->ntk_encrypt($archives_item['bac_id'])?>"><?= $archives_item['bac_title']?></a>
   				<p class="index-blog-meta"><?=  substr($archives_item['bac_created_time'], 0, 10)?></p>
+  				<div class="blog-category">
+  				<!-- 分類 -->
+  			  <?php if (!empty($archives_item['bcg_name'])): ?>
+  			    <p><?= $archives_item['bcg_name']?></p>
+  			  <?php endif; ?>
+  			  </div>
         </div>
+        
         <div class="index-blog-fp">
 			    <?= $this->blog_model->show_first_part($this->typography->auto_typography($archives_item['bac_content']));?>
 				</div>
@@ -36,6 +75,7 @@
 				<div class="index-blog-link">
 				  <a href="<?= base_url()?>blog/<?= url_title($archives_item['bac_title'])."-".$this->blog_model->ntk_encrypt($archives_item['bac_id'])?>">Continue reading</a>
 				</div>
+				
 				
 			</div>
 			<?php endforeach ?>
@@ -56,7 +96,7 @@
         </h3>
         <div class="sidebar-module-img">
           <a href="<?= base_url()?>">
-            <img style="width:120px;" src="<?= base_url()?>resource/images/blog/avatar.png" class="img-circle">
+            <img style="width:120px;" src="<?= base_url()?>resource/images/blog/hd.JPG" class="img-circle">
           </a>
         </div>
         <div class="sidebar-module-description">

@@ -79,35 +79,57 @@ $(function(){
 		$("#banner_div").html($("#banner_html").val());
 	}
 	
-	show_set($("#Article_show").val());
+	//--顯示文章
+	if($("#Article_show").val()==1)
+	{
+		show_set(1,'blog_post_show_set','Article_show','fa-eye','fa-eye-slash','已顯示')
+	}else
+	{
+		show_set(0,'blog_post_show_set','Article_show','fa-eye-slash','fa-eye','已隱藏')
+	}
+	
 	$("#blog_post_show_set").click(function(){
 		if($("#Article_show").val()==1)
 		{
-			show_set(0)
+			show_set(0,'blog_post_show_set','Article_show','fa-eye-slash','fa-eye','已隱藏');
 			$("#blog_post_show_set").children("i").tooltip('show');
 		}else
 		{
-			show_set(1);
+			show_set(1,'blog_post_show_set','Article_show','fa-eye','fa-eye-slash','已顯示');
 			$("#blog_post_show_set").children("i").tooltip('show');
 		}
 	});
-});
-function show_set(set)
-{
-	var this_icon=$("#blog_post_show_set").children("i");
-	if(set==1)
+	
+	//--顯示於首頁
+	if($("#ShowOnIndex").val()==1)
 	{
-		$("#Article_show").val(1);
-		this_icon.removeClass("fa-eye-slash");
-		this_icon.addClass("fa-eye");
-		this_icon.tooltip('hide').attr('data-original-title', "已顯示").tooltip('fixTitle');
+		show_set(1,'blog_post_ShowOnIndex','ShowOnIndex','fa-bookmark','fa-bookmark-o','取消顯示於首頁');
 	}else
 	{
-		$("#Article_show").val(0);
-		this_icon.removeClass("fa-eye");
-		this_icon.addClass("fa-eye-slash");
-		this_icon.tooltip('hide').attr('data-original-title', "已隱藏").tooltip('fixTitle');
+		show_set(0,'blog_post_ShowOnIndex','ShowOnIndex','fa-bookmark-o','fa-bookmark','顯示於首頁');
 	}
+	
+	$("#blog_post_ShowOnIndex").click(function(){
+		if($("#ShowOnIndex").val()==1)
+		{
+			show_set(0,'blog_post_ShowOnIndex','ShowOnIndex','fa-bookmark-o','fa-bookmark','顯示於首頁');
+			$("#blog_post_ShowOnIndex").children("i").tooltip('show');
+		}else
+		{
+			show_set(1,'blog_post_ShowOnIndex','ShowOnIndex','fa-bookmark','fa-bookmark-o','取消顯示於首頁');
+			$("#blog_post_ShowOnIndex").children("i").tooltip('show');
+		}
+	});
+});
+function show_set(set_val,a_id,input_id,icon_show,icon_remove,icon_text)
+{
+	var this_icon=$("#"+a_id).children("i");
+	
+	$("#"+input_id).val(set_val);
+	this_icon.removeClass(icon_remove);
+	this_icon.addClass(icon_show);
+	this_icon.tooltip('hide').attr('data-original-title', icon_text).tooltip('fixTitle');
+	
 }
 </script>
 <style type="text/css">
@@ -156,11 +178,16 @@ figcaption
 			<input type="text" name="title" class="form-control input-lg" id="Article_Title" placeholder="Article Title" value="<?= $archive_data['bac_title']?>">
 		</h1>
 		<p class="lead blog-description">
-			<?=  date("Y-m-d")?>
+			<?=  date("Y-m-d")?><br/>
 			<a id="blog_post_show_set" href="javascript:">
-	      		<i class="fa fa-eye tip" data-toggle="tooltip" data-placement="right" title="顯示"></i>
+	      		<i class="fa fa-eye tip" data-toggle="tooltip" data-placement="bottom" title="顯示"></i>
 	      	</a>
 	      	<input type="hidden" name="show" id="Article_show" value="<?= $archive_data['bac_show']?>">
+	      	&nbsp;
+	      	<a id="blog_post_ShowOnIndex" href="javascript:">
+	      		<i class="fa fa-bookmark-o tip" data-toggle="tooltip" data-placement="bottom" title="顯示於首頁"></i>
+	      	</a>
+	      	<input type="hidden" name="ShowOnIndex" id="ShowOnIndex" value="<?= $archive_data['bac_ShowOnIndex']?>">
 		</p>
 	</div>
 	<hr/>
@@ -174,6 +201,17 @@ figcaption
 				<?php echo validation_errors(); ?>
 			</p>
 		</div>
+	</div>
+	<div class="col-md-12 blog-bottom text-right" style="margin-bottom: 30px;">
+		<p class="blog-bottom-category col-md-2 pull-right">
+			<select name="category" class="form-control">
+				<option value="">選擇分類</option>
+	  			<?php foreach($category as $category_row):?>
+	  				<option value="<?= $category_row['bcg_id']?>" <?php if ($archive_data['bac_f_blog_category']==$category_row['bcg_id']): ?>selected="selected"<?php endif; ?>><?= $category_row['bcg_name']?></option>
+	  			<?php endforeach ?>
+			</select>
+		</p>
+		
 	</div>
 </div>
 <div class="blog-post-submit container">	

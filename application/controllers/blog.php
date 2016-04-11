@@ -23,6 +23,7 @@ class Blog extends MY_Main
 			$show_all=true;
 		}
 		
+		$data['banner_archives']=$this->blog_model->get_banner_archives();
 		$data['recent_archives']=$this->blog_model->get_recent_articles($show_all);
 		$data['archives']=$this->blog_model->get_articles($page_data,$show_all);
 		$data['author_name']='Kenyeh';
@@ -75,7 +76,9 @@ class Blog extends MY_Main
 			'bac_banner'=>"",
 			'bac_title'=>"",
 			'bac_content'=>"",
-			'bac_show'=>""
+			'bac_show'=>"",
+			'bac_ShowOnIndex'=>"",
+			'bac_f_blog_category'=>""
 		);
 		if(!empty($id))
 		{
@@ -90,6 +93,9 @@ class Blog extends MY_Main
 		$this->form_validation->set_rules('title','標題','required');
 		$this->form_validation->set_rules('text','內文','required');
 		
+		
+		//--文章分類
+		$data['category'] = $this->blog_model->get_all_category();
 		
 		
 		if($this->form_validation->run()===FALSE)
@@ -126,7 +132,9 @@ class Blog extends MY_Main
 			"bac_created_user"=>$this->session_name,
 			"bac_content"=>$this->input->post("text"),
 			"bac_banner"=>$this->input->post('banner'),
-			"bac_show"=>$this->input->post('show')
+			"bac_show"=>$this->input->post('show'),
+			"bac_ShowOnIndex"=>$this->input->post('ShowOnIndex'),
+			"bac_f_blog_category"=>$this->input->post('category')
 		);
 		
 		return $this->db->insert('blog_archives',$data);
@@ -140,7 +148,9 @@ class Blog extends MY_Main
 			"bac_modified_user"=>$this->session_name,
 			"bac_content"=>$this->input->post("text"),
 			"bac_banner"=>$this->input->post('banner'),
-			"bac_show"=>$this->input->post('show')
+			"bac_show"=>$this->input->post('show'),
+			"bac_ShowOnIndex"=>$this->input->post('ShowOnIndex'),
+			"bac_f_blog_category"=>$this->input->post('category')
         );
 		
 		$this->db->where('bac_id', $id);

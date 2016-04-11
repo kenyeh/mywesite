@@ -66,7 +66,13 @@ $(function(){
 });
 	
 </script>
-
+<style type="text/css"> 
+    .theme-default{
+		background: url('https://farm1.staticflickr.com/678/20402521020_e307d6f5df_k.jpg') center center no-repeat;
+		background-size:cover;
+		
+	}
+</style> 
 </head>
 
 
@@ -127,14 +133,14 @@ $(function(){
 	</div>
 	
 	
-	<!--
+	
 	<div class="signin-with">
 		<div class="header">or sign in with</div>
 		<a href="index.html" class="btn btn-lg btn-facebook rounded"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;
 		<a href="index.html" class="btn btn-lg btn-info rounded"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;
 		<a href="index.html" class="btn btn-lg btn-danger rounded"><i class="fa fa-google-plus"></i></a>
 	</div>
-	-->
+	
 
 
 </body>

@@ -69,10 +69,20 @@ $(function(){
 		<p class="lead blog-description"><?=  substr($archive['bac_created_time'], 0, 10)?></p>
 	</div>
 	<hr/>
-	<div class="col-md-12 blog-content" style=" margin-bottom: 100px;">
+	<div class="col-md-12 blog-content" style="margin-bottom: 100px;">
 		<div class="blog-post">
 			<?= $this->typography->auto_typography($archive['bac_content'])?>
 		</div>
+	</div>
+	<div class="col-md-12 blog-bottom text-right" style="margin-bottom: 30px;">
+		<?php if (!empty($archive['bcg_name'])): ?>
+		<p class="blog-bottom-category"><?= $archive['bcg_name']?></p>
+		<?php endif;?>
+		<!--
+		<br/>
+		<br/>
+		<p><a href="#" class="btn btn-primary" title="facebook"><i class="fa fa-facebook fa-lg"></i></a></p>
+		-->
 	</div>
 </div>
 <div class="blog-article-back">

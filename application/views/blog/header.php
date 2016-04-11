@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="<?= base_url()?>resource/images/blog/k.png">
 
-    <title>Blog<?= $web_site?></title>
+    <title>Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url()?>resource/css/blog/bootstrap-flatly.min.css" rel="stylesheet">
@@ -73,13 +73,13 @@
 	
     <div class="blog-masthead container-fluid">
       
-        <nav class="blog-nav">
+        <nav class="blog-nav navbar-fixed-top">
          	<a id="Blog_index_link" class="blog-nav-item navbar-brand" href="<?= base_url()?>blog">
          		<img class="Brand" src="<?= base_url()?>resource/images/blog/k.png" height="28">
          	</a>
          	
          	<?php if (!empty($this->session_name)): ?>
-          	<a id="Blog_signout_link" class="blog-nav-item pull-right text-primary" href="#">
+          	<a id="Blog_signout_link" class="blog-nav-item pull-right" href="#">
           		<i class="fa fa-power-off fa-lg tip" data-toggle="tooltip" data-placement="bottom" title="登出"></i>
           	</a>
 		  		<?php if (isset($archive_id_code)): ?>

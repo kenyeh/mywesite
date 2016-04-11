@@ -54,7 +54,8 @@ $(function(){
     //--back to top 
     $("#btn_back_top").click(function (){
         $('html, body').animate({
-            scrollTop: $("#Blog_index_link").offset().top
+            //scrollTop: $("#Blog_index_link").offset().top
+            scrollTop: 0
         }, 1000);
     });
     

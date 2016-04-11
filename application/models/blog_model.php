@@ -8,6 +8,8 @@ class Blog_model extends CI_Model
 	
 	public function get_articles($page_data,$show_all)
 	{
+		
+		
 		if(!$show_all)
 		{
 			$this->db->where('bac_show', 1);
@@ -15,6 +17,8 @@ class Blog_model extends CI_Model
 		
 		$this->db->order_by("bac_created_time", "desc")
 		->limit($page_data['per_page'], $page_data['start']);
+		
+		$this->db->join('blog_category', 'bac_f_blog_category = bcg_id','left');
 		
 		$query=$this->db->get('blog_archives');
 		return $query->result_array();
@@ -36,10 +40,31 @@ class Blog_model extends CI_Model
 		return $query->result_array();
 	}
 	
+	public function get_banner_archives()
+	{
+		$this->db->where('bac_show', 1);
+		$this->db->where('bac_ShowOnIndex', 1);
+		
+		$this->db
+		->select('bac_id, bac_title,bac_banner,bac_content')
+		->order_by("bac_created_time", "desc");
+		
+		$query=$this->db->get('blog_archives');
+		return $query->result_array();
+	}
+	
 	public function get_all_articles()
 	{
 		$query=$this->db->get('blog_archives');
 		return $query->num_rows();
+	}
+	
+	
+	//取得所有分類
+	public function get_all_category()
+	{
+		$query=$this->db->select('bcg_id, bcg_name')->get('blog_category');
+		return $query->result_array();
 	}
 	
 	public function get_id_article($id = FALSE)
@@ -50,7 +75,7 @@ class Blog_model extends CI_Model
 			return array();
 		}
 
-		$query = $this->db->get_where('blog_archives',array('bac_id'=>$id));
+		$query = $this->db->join('blog_category', 'bac_f_blog_category = bcg_id','left')->get_where('blog_archives',array('bac_id'=>$id));
 		return $query->row_array();
 	}
 	
@@ -119,6 +144,8 @@ class Blog_model extends CI_Model
 		
 		return $StaKey.$Catchstr.$EndKey;
 	}
+	
+	
 	
 	
 }
