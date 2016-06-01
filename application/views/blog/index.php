@@ -145,10 +145,10 @@
           <span>連結</span>
         </h3>
         <div class="sidebar-module-description">
-          <a href="#" class="btn btn-primary" title="facebook"><i class="fa fa-facebook fa-lg"></i></a>
-          <a href="#" class="btn btn-primary" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
-          <a href="#" class="btn btn-primary" title="instagram"><i class="fa fa-instagram fa-lg"></i></a>
-          <a href="#" class="btn btn-primary" title="github"><i class="fa fa-github fa-lg"></i></a>
+          <a target="_blank" href="https://www.facebook.com/ken.yeh.5" class="btn btn-primary" title="facebook"><i class="fa fa-facebook fa-lg"></i></a>
+          <a target="_blank" href="https://tw.linkedin.com/in/ken-yeh-247052117" class="btn btn-primary" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+          <!--<a target="_blank" href="#" class="btn btn-primary" title="instagram"><i class="fa fa-instagram fa-lg"></i></a>-->
+          <a target="_blank" href="https://github.com/kenyeh/mywesite" class="btn btn-primary" title="github"><i class="fa fa-github fa-lg"></i></a>
         </div>
       </div>
       

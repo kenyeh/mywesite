@@ -34,29 +34,52 @@ figcaption
 	left: 0;
 }
 
-</style>
+/*full img*/
+.full_img
+{
+	overflow: visible;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
 
+
+/*middle_size_img*/
+.middle_size_img
+{
+	position: static;
+	overflow: visible;
+	margin:10px 0px 10px 0px !important;
+	
+}
+
+@media screen and (min-width:1024px){
+    .mdg_P.col-md-4
+	{
+		padding-left: 38px;
+	}
+	
+	.mdg_P.col-md-2
+	{
+		padding-left: 18px;
+	}
+}
+
+
+</style>
 
 <script type="text/javascript">
 $(function(){
 	$(function() {
 	    $("img").lazyload({effect: "fadeIn",threshold : 200});
 	    
-	    //當圖片進入可視區顯示描述，移開消失
-	    $(window).scroll(function(){
-	    	$("figure").each(function(){
-	    		var this_top=$(this).offset().top;
-	    		var window_top=$(window).scrollTop();
-		    	if(this_top+($(this).height()/2) >=  window_top && this_top <= window_top+($(window).height()/2))
-		    	{
-		    		$(this).find("figcaption").addClass("show_figcaption");
-		    	}else
-		    	{
-		    		$(this).find("figcaption").removeClass("show_figcaption");
-		    	}
-		    });
-	    });
-	   //--
+	    
+	   
+	   //--full img
+	   var leftpadding=(($(window).width()-($(".blog-article").width()+30))/2);
+	   $(".full_img").css("left",0-leftpadding);
+	   $(".full_img").css("width",$(window).width());
+	   
+	   
 	});
 });
 </script>
@@ -72,9 +95,12 @@ $(function(){
 	<div class="col-md-12 blog-content" style="margin-bottom: 100px;">
 		<div class="blog-post">
 			<?= $this->typography->auto_typography($archive['bac_content'])?>
+			
+			
+			
 		</div>
 	</div>
-	<div class="col-md-12 blog-bottom text-right" style="margin-bottom: 30px;">
+	<div class="col-xs-12 blog-bottom text-right" style="margin-bottom: 30px;">
 		<?php if (!empty($archive['bcg_name'])): ?>
 		<p class="blog-bottom-category"><?= $archive['bcg_name']?></p>
 		<?php endif;?>

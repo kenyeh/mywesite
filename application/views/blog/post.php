@@ -27,7 +27,7 @@ $(function(){
 		  'hr',//             # 分割线
 		  'indent',//         # 向右缩进
 		  'outdent',//        # 向左缩进
-		  'figure',//     # flickr
+		  'photo',//         # flickr
 		  'source',//         # HTML源代码
 		]
 	});
@@ -120,6 +120,11 @@ $(function(){
 			$("#blog_post_ShowOnIndex").children("i").tooltip('show');
 		}
 	});
+	
+	//--full img
+	var leftpadding=(($(window).width()-($(".blog-article").width()+30))/2);
+	$(".full_img").css("left",0-leftpadding);
+	$(".full_img").css("width",$(window).width());
 });
 function show_set(set_val,a_id,input_id,icon_show,icon_remove,icon_text)
 {
@@ -161,14 +166,22 @@ figcaption
 	padding: 0 15px 0 15px;
 	
 }
+
+/*full img*/
+.full_img
+{
+	overflow: visible;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
 </style>
 <?= form_open('blog/post')?>
 <input type="hidden" name="id" id="Article_Id" value="<?= $edit_id?>">
-<div class="banner_div" id="banner_div">
+<div class="banner_div" id="banner_div" style="margin-top:60px;">
 </div>
 <div class="container blog-post-banner" id="blog-post-banner">
 	<textarea style="display:none;" class="form-control input-lg" name="banner" id="banner_html" rows="3" placeholder="banner html"><?= $archive_data['bac_banner']?></textarea>
-	<button type="button" class="btn btn-default btn-sm tip" id="toggle_banner_img_btn" data-toggle="tooltip" data-placement="bottom" title="新增標題圖片"><i class="fa fa-picture-o fa-lg"></i></button>
+	<button type="button" class="btn btn-default btn-sm tip" id="toggle_banner_img_btn" data-toggle="tooltip" data-placement="bottom" title="新增標題圖片"><i class="fa fa-picture-o fa-lg"></i></button>&nbsp;
 	<button type="button" class="btn btn-default btn-sm tip" id="toggle_banner_video_btn" data-toggle="tooltip" data-placement="bottom" title="新增標題影片"><i class="fa fa-youtube-play fa-lg"></i></button>
 </div>
 <div class="container blog-article">

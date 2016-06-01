@@ -322,7 +322,7 @@ Formatter = (function(superClass) {
 
   Formatter.prototype._init = function() {
     this.editor = this._module;
-    this._allowedTags = this.opts.allowedTags || ['br', 'a', 'img', 'b', 'strong', 'i', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'hr', 'figure','figcaption'];
+    this._allowedTags = this.opts.allowedTags || ['br', 'a', 'img', 'b', 'strong', 'i', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'hr', 'figure','figcaption','div'];
     this._allowedAttributes = this.opts.allowedAttributes || {
       img: ['src', 'alt', 'width', 'height', 'data-image-src', 'data-image-size', 'data-image-name', 'data-non-image','class'],
       a: ['href', 'target'],
@@ -332,7 +332,9 @@ Formatter = (function(superClass) {
       h1: ['data-indent'],
       h2: ['data-indent'],
       h3: ['data-indent'],
-      h4: ['data-indent']
+      h4: ['data-indent'],
+      figure: ['class'],
+      div: ['class']
     };
     return this.editor.body.on('click', 'a', (function(_this) {
       return function(e) {
@@ -538,7 +540,7 @@ Formatter = (function(superClass) {
           if (children.length > 0) {
             result += _this.clearHtml(children);
           }
-          if (lineBreak && i < contents.length - 1 && $node.is('br, p, div, li, tr, pre, address, artticle, aside, dl, figure, footer, h1, h2, h3, h4, header')) {
+          if (lineBreak && i < contents.length - 1 && $node.is('br, p, div, li, tr, pre, address, artticle, aside, dl, figure, div, footer, h1, h2, h3, h4, header')) {
             return result += '\n';
           }
         }
@@ -2424,7 +2426,7 @@ Simditor.i18n = {
     'code': '插入代码',
     'color': '文字颜色',
     'hr': '分隔线',
-    'figure': '插入Flickr',
+    'photo': '插入Flickr',
     'image': '插入图片',
     'externalImage': '外链图片',
     'uploadImage': '上传图片',
@@ -2438,7 +2440,7 @@ Simditor.i18n = {
     'indent': '向右缩进',
     'outdent': '向左缩进',
     'italic': '斜体文字',
-    'link': '插入链接',
+    'link': '���入链接',
     'text': '文本',
     'linkText': '链接文字',
     'flickrText': 'FlickrPic',
@@ -4634,12 +4636,12 @@ FlickrButton = (function(superClass) {
     return FlickrButton.__super__.constructor.apply(this, arguments);
   }
 
-  FlickrButton.prototype.name = 'figure';
+  FlickrButton.prototype.name = 'photo';
 
   FlickrButton.prototype.icon = 'picture-o';
 
-  FlickrButton.prototype.htmlTag = 'figure';
-
+  FlickrButton.prototype.htmlTag = 'div';
+  
   FlickrButton.prototype.disableTag = 'pre';
 
   FlickrButton.prototype.render = function() {
@@ -4686,7 +4688,7 @@ FlickrButton = (function(superClass) {
     var $contents, $endBlock, $link, $newBlock, $startBlock, endNode, linkText, range, startNode, txtNode;
     range = this.editor.selection.getRange();
     if (this.active) {
-      $link = $(range.commonAncestorContainer).closest('figure');
+      $link = $(range.commonAncestorContainer).closest('div');
       txtNode = document.createTextNode($link.text());
       $link.replaceWith(txtNode);
       range.selectNode(txtNode);
@@ -4697,9 +4699,11 @@ FlickrButton = (function(superClass) {
       $endBlock = this.editor.util.closestBlockEl(endNode);
       $contents = $(range.extractContents());
       linkText = this.editor.formatter.clearHtml($contents.contents(), false);
-      $link = $('<figure/>', {
+      $link = $('<div/>', {
         text: this._t('flickrText')
       });
+      $link.addClass("photo-div");
+      //console.log($link);
       if ($startBlock[0] === $endBlock[0]) {
         range.insertNode($link[0]);
       } else {
@@ -4739,22 +4743,145 @@ FlickrPopover = (function(superClass) {
 
   FlickrPopover.prototype.render = function() {
     var tpl;
-    tpl = "<div class=\"link-settings\">\n  <div class=\"settings-field\">\n    <label>HTML</label>\n    <input class=\"link-text\" type=\"text\"/>\n</div> <div class=\"settings-field\"><label>Description</label>\n    <input class=\"figcaption-text\" type=\"text\"/>\n      </div>\n  </div>";
+    tpl = "<div class=\"link-settings\">\n  ";
+    tpl +="  <div class=\"settings-field\">\n    ";
+    tpl +="    <label>picture-style</label>\n    ";
+    tpl +="    <select class=\"pic-type\">\n";
+    tpl +="       <option value=\"nm\">Normal</option>";
+    tpl +="       <option value=\"fs\">Full screen</option>";
+    tpl +="       <option value=\"fl\">Four landscape</option>";
+    tpl +="       <option value=\"tp\">Three portrait</option>";
+    tpl +="    </select>\n";
+    tpl +="  </div> ";
+    tpl +="  <div class=\"settings-field\">\n    ";
+    tpl +="    <label>FlickrLink</label>\n    ";
+    tpl +="    <input class=\"link-text nm\" type=\"text\"/>\n";
+    tpl +="    <input class=\"link-text fs\" type=\"text\" style=\"display:none;\" />\n";
+    tpl +="    <input class=\"link-text fl\" type=\"text\" style=\"display:none;\" />\n";
+    tpl +="    <input class=\"link-text fl\" type=\"text\" style=\"display:none;\" />\n";
+    tpl +="    <input class=\"link-text fl\" type=\"text\" style=\"display:none;\" />\n";
+    tpl +="    <input class=\"link-text fl\" type=\"text\" style=\"display:none;\" />\n";
+    tpl +="    <input class=\"link-text tp\" type=\"text\" style=\"display:none;\" />\n";
+    tpl +="    <input class=\"link-text tp\" type=\"text\" style=\"display:none;\" />\n";
+    tpl +="    <input class=\"link-text tp\" type=\"text\" style=\"display:none;\" />\n";
+    tpl +="  </div> ";
+    tpl +="  <br/> ";
+    tpl +="  <div class=\"settings-field\">\n    ";
+    tpl +="    <input class=\"link-submit\" type=\"button\"/ value=\"Submit\">\n";
+    tpl +="  </div> ";
+    /*
+    tpl +="  <div class=\"settings-field\">";
+    tpl +="    <label>Description</label>\n    ";
+    tpl +="    <input class=\"figcaption-text\" type=\"text\"/>\n "    ; 
+    tpl +="  </div>\n"  ;
+    */
+    tpl +="</div>";
+    
+    
+    
     this.el.addClass('link-popover').append(tpl);
+    this.selectEl = this.el.find('.pic-type');
+    var this_type=this.selectEl;
     this.textEl = this.el.find('.link-text');
-    this.figcaptionEl = this.el.find('.figcaption-text');
+    var all_textel=this.textEl;
+    this.submitEl = this.el.find('.link-submit');
+    //this.figcaptionEl = this.el.find('.figcaption-text');
     this.unlinkEl = this.el.find('.btn-unlink');
     
     
-    this.textEl.on('blur', (function(_this) {
+    this.selectEl.on("change",function(){
+      //console.log($(this).val());
+      all_textel.hide();
+      switch($(this).val())
+      {
+        case 'nm':
+          all_textel.filter(".nm").show();
+        break;
+        case 'fs':
+           all_textel.filter(".fs").show();
+        break;
+        case 'fl':
+           all_textel.filter(".fl").show();
+        break;
+        case 'tp':
+           all_textel.filter(".tp").show();
+        break;
+      }
+    });
+    
+    
+    this.submitEl.on('click', (function(_this) {
       return function(e) {
         if (e.which === 13) {
           return;
         }
-        return _this.target.html(_this.textEl.val());
+        
+        //console.log(_this);
+        var this_type_val=_this.selectEl.val();
+        
+        
+        switch(this_type_val)
+        {
+          case 'nm':
+            //Normal
+            var this_textEls_val=_this.el.find('.link-text.'+this_type_val).val();
+            //console.log(this_textEls_val);
+            var this_link_html="<figure>"+this_textEls_val+"</figure>";
+            _this.target.html(this_link_html);
+          break;
+          case 'fs':
+            //Full screen
+            var this_textEls_val=_this.el.find('.link-text.'+this_type_val).val();
+            //console.log(this_textEls_val);
+            var this_link_html="<figure class='full_img'>"+this_textEls_val+"</figure>";
+            _this.target.html(this_link_html);
+          break;
+          case 'fl':
+             //Four landscape
+             var start_html="";
+             start_html+="<div class=\"col-md-6 col-sm-12\"><figure class=\"middle_size_img\">";
+             
+             var end_html="";
+             end_html+="</figure></div>";
+             
+             var rs_html="";
+             
+             _this.el.find('.link-text.'+this_type_val).each(function(){
+               rs_html+=start_html;
+               rs_html+=$(this).val();
+               rs_html+=end_html;
+             });
+             
+             //console.log(rs_html);
+             _this.target.html(rs_html);
+             //
+          break;
+          case 'tp':
+             //Three portrait
+             var start_html="";
+             start_html+="<div class=\"col-sm-4\"><figure class=\"middle_size_img\">";
+             
+             var end_html="";
+             end_html+="</figure></div>";
+             
+             var rs_html="";
+             
+             _this.el.find('.link-text.'+this_type_val).each(function(){
+               rs_html+=start_html;
+               rs_html+=$(this).val();
+               rs_html+=end_html;
+             });
+             
+             //console.log(rs_html);
+             _this.target.html(rs_html);
+          break;
+        }
+        //console.log(_this.target);
+        return ;
       };
     })(this));
     
+    /*
     this.figcaptionEl.on('blur', (function(_this) {
       return function(e) {
         if (e.which === 13) {
@@ -4769,7 +4896,7 @@ FlickrPopover = (function(superClass) {
         }
       };
     })(this));
-    
+    */
     
      
     return this.unlinkEl.on('click', (function(_this) {
@@ -4791,7 +4918,7 @@ FlickrPopover = (function(superClass) {
     FlickrPopover.__super__.show.apply(this, args);
     
     var figcaption_val=this.target.find("figcaption").text();
-    this.figcaptionEl.val(figcaption_val);
+    //this.figcaptionEl.val(figcaption_val);
     
     var regEx = /<figcaption[^>]*>[^>]*<[^>]figcaption>/g;
     var html_val=this.target.html().replace(regEx, "");
