@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url()?>resource/css/blog/banner_styles.css">
 <script src="<?= base_url()?>resource/js/banner_main.js"></script>
 <script src="<?= base_url()?>resource/js/stopExecutionOnTimeout.js?t=1"></script>
+<?php if(count($banner_archives)>0):?>
 <div class="slider-container" id="slider_container">
   <div class="slider-control left inactive"></div>
   <div class="slider-control right"></div>
@@ -31,6 +32,7 @@
     <?php endforeach ?>
   </div>
 </div>
+<?php endif;?>
 
 <!--
 <div class="jum-bg">
