@@ -47,7 +47,7 @@ $route['blog/(:any)'] = 'blog/view/$1';
 $route['blog'] = 'blog';
 
 
-$route['default_controller'] = "profile";
+$route['default_controller'] = "blog";
 $route['404_override'] = '';
 
 

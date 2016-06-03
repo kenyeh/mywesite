@@ -26,7 +26,7 @@ class Blog extends MY_Main
 		$data['banner_archives']=$this->blog_model->get_banner_archives();
 		$data['recent_archives']=$this->blog_model->get_recent_articles($show_all);
 		$data['archives']=$this->blog_model->get_articles($page_data,$show_all);
-		$data['author_name']='Kenyeh';
+		$data['author_name']='KenYeh';
 		$data['blog_index_title']='Never give up on a dream';
 		$data['blog_index_description']='Just because of the time it will take to accomplish it. The time will pass anyway.';
 		$hand_data['web_site']=' - '.$data['blog_index_title'];

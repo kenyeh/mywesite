@@ -97,13 +97,13 @@
           <span>關於我</span>
         </h3>
         <div class="sidebar-module-img">
-          <a href="<?= base_url()?>">
+          <a href="<?= base_url()?>profile">
             <img style="width:120px;" src="<?= base_url()?>resource/images/blog/hd.JPG" class="img-circle">
           </a>
         </div>
         <div class="sidebar-module-description">
           <h3 class="text-primary"><?=$author_name?></h3>
-          <p>我隨便寫寫，你隨便看看。</p>
+          <p>隨便寫寫，隨便看看。</p>
         </div>
       </div>
       <div class="sidebar-module">
